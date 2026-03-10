@@ -1,0 +1,114 @@
+---
+title: "Web Search & Scrape"
+description: Search the web, images, and news, and scrape web pages.
+---
+
+import { Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+Flowmi gives you web search and page scraping from the command line. Search across web results, images, and news, then scrape any URL to pull its content as Markdown.
+
+## Searching
+
+The `flowmi search` command supports three search modes. Running `flowmi search "query"` is equivalent to `flowmi search web "query"`.
+
+<Tabs>
+  <TabItem label="Web">
+    Search the web for general results:
+
+    ```bash
+    flowmi search "rust async patterns"
+    ```
+
+    This is the same as:
+
+    ```bash
+    flowmi search web "rust async patterns"
+    ```
+  </TabItem>
+  <TabItem label="Images">
+    Search for images:
+
+    ```bash
+    flowmi search images "northern lights"
+    ```
+
+    Filter by image size:
+
+    ```bash
+    flowmi search images "northern lights" --size large
+    ```
+  </TabItem>
+  <TabItem label="News">
+    Search recent news articles:
+
+    ```bash
+    flowmi search news "open source AI"
+    ```
+
+    Filter by time period:
+
+    ```bash
+    flowmi search news "open source AI" --time week
+    ```
+  </TabItem>
+</Tabs>
+
+## Common flags
+
+These flags work across all search modes:
+
+| Flag         | Description                        | Example                |
+|--------------|------------------------------------|------------------------|
+| `--limit`    | Number of results to return        | `--limit 5`            |
+| `--page`     | Results page number                | `--page 2`             |
+| `--country`  | Country code for localized results | `--country us`         |
+| `--language` | Language code for results          | `--language en`        |
+
+```bash
+flowmi search "climate data" --limit 5 --country us --language en
+```
+
+## Scraping URLs
+
+Scrape a web page and get its content back as Markdown:
+
+```bash
+flowmi scrape https://example.com/article
+```
+
+<Aside type="tip">
+The scraper returns clean Markdown text, stripping navigation, ads, and boilerplate. This makes the output ideal for piping into other tools or storing as a note.
+</Aside>
+
+Save scraped content to a file:
+
+```bash
+flowmi scrape https://example.com/article > article.md
+```
+
+Pipe it into Flowmi Drive:
+
+```bash
+flowmi scrape https://example.com/article | flowmi drive upload --path /research/article.md
+```
+
+## Combining search and scrape
+
+A common workflow is to search for something, pick a result URL, and then scrape it for the full content:
+
+```bash
+# 1. Search for results
+flowmi search "best practices for CLI design"
+
+# 2. Scrape a result URL from the output
+flowmi scrape https://example.com/cli-best-practices
+
+# 3. Store the scraped content as a note
+flowmi scrape https://example.com/cli-best-practices | flowmi note create -s "CLI best practices" -c -
+```
+
+You can also save scraped content directly to your drive:
+
+```bash
+flowmi scrape https://example.com/cli-best-practices | flowmi drive upload --path /research/cli-design.md
+```

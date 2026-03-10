@@ -1,0 +1,103 @@
+---
+title: Managing Files
+description: Upload, download, and manage files in Flowmi Drive.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Flowmi Drive gives you cloud file storage accessible entirely from the command line. Upload from your filesystem or stdin, download to stdout or a local file, and pipe data between Flowmi and other CLI tools.
+
+<Aside type="tip">
+Flowmi Drive is designed for Unix-style piping. You can stream data in with `|` on upload and stream data out on download — combine it with `jq`, `wc`, `awk`, or any tool in your pipeline.
+</Aside>
+
+## Uploading files
+
+Upload a file from your local filesystem:
+
+```bash
+flowmi drive upload ./file.pdf
+```
+
+MIME type is detected automatically from the file extension. The file is stored at the root of your drive unless you specify a path.
+
+Upload to a specific path in your drive:
+
+```bash
+flowmi drive upload ./report.pdf --path /reports/q3-report.pdf
+```
+
+## Uploading from stdin
+
+Pipe data directly into Flowmi Drive. When uploading from stdin you must provide `--path` so Flowmi knows where to store the file:
+
+```bash
+echo "quick note" | flowmi drive upload --path /notes/data.txt
+```
+
+This works with any command that writes to stdout:
+
+```bash
+cat report.csv | flowmi drive upload --path /data/report.csv
+```
+
+## Downloading files
+
+Download a file and print its contents to stdout:
+
+```bash
+flowmi drive download /path/file.txt
+```
+
+Save the download directly to a local file with `-D`:
+
+```bash
+flowmi drive download /path/file.txt -D ./local.txt
+```
+
+## Piping patterns
+
+Because download writes to stdout by default, you can pipe it into other tools:
+
+```bash
+# Count lines in a remote CSV
+flowmi drive download /data.csv | wc -l
+
+# Pretty-print a JSON file
+flowmi drive download /config.json | jq .
+
+# Search through a remote log
+flowmi drive download /logs/app.log | grep "ERROR"
+```
+
+## Viewing metadata
+
+Inspect a file's metadata — size, MIME type, timestamps — without downloading its contents:
+
+```bash
+flowmi drive view /path/file.txt
+```
+
+## Managing trash
+
+<Steps>
+
+1. **Soft delete** a file (moves it to trash):
+
+   ```bash
+   flowmi drive delete /path/file.txt
+   ```
+
+2. **Restore** a trashed file back to its original location:
+
+   ```bash
+   flowmi drive restore <id>
+   ```
+
+3. **Permanently delete** a file from the trash:
+
+   ```bash
+   flowmi drive trash delete <id>
+   ```
+
+</Steps>

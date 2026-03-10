@@ -1,0 +1,75 @@
+---
+title: Quickstart
+description: Get up and running with Flowmi CLI in 5 minutes.
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+Follow these steps to go from zero to productive with Flowmi CLI.
+
+<Steps>
+
+1. **Install the CLI**
+
+   Download and install with a single command:
+
+   ```bash
+   curl -fsSL https://flowmi.ai/install | bash
+   ```
+
+2. **Log in to your account**
+
+   Authenticate via your browser:
+
+   ```bash
+   flowmi auth login
+   ```
+
+3. **Create a note**
+
+   Write your first note straight from the terminal:
+
+   ```bash
+   flowmi note create -s "My first note" -c "Hello from the CLI!"
+   ```
+
+4. **Upload a file**
+
+   Send a local file to your Flowmi Drive:
+
+   ```bash
+   flowmi drive upload ./report.pdf
+   ```
+
+5. **Search the web**
+
+   Run a web search without leaving the terminal:
+
+   ```bash
+   flowmi search "flowmi platform"
+   ```
+
+6. **Send an email**
+
+   First, create a mailbox if you do not have one yet:
+
+   ```bash
+   flowmi email mailbox create --address hello@example.com
+   ```
+
+   Then send your first email:
+
+   ```bash
+   flowmi email send -m <mailbox-id> --to recipient@example.com --subject "Hello" --text "Sent from Flowmi CLI"
+   ```
+
+</Steps>
+
+## Next steps
+
+You are all set. Here are some places to go from here:
+
+- [Notes guide](/docs/guides/working-with-notes/) — learn advanced note features like labels and search.
+- [Drive guide](/docs/guides/managing-files/) — upload, download, and pipe files.
+- [Tables guide](/docs/guides/using-tables/) — create typed tables and query them with filters.
+- [Command reference](/docs/commands/overview/) — full list of every command and flag.

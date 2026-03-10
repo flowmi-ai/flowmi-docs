@@ -1,40 +1,41 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Flowmi CLI
+description: The command-line interface for the Flowmi platform.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: Manage notes, files, tables, emails, and more — right from your terminal.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /docs/getting-started/introduction/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Command Reference
+      link: /docs/commands/overview/
+      icon: open-book
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## What you can do
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<CardGrid>
+  <Card title="Notes" icon="pencil">
+    Create, edit, search, and organize notes with labels.
+  </Card>
+  <Card title="Drive" icon="document">
+    Upload and download files. Pipe content from stdin or save to disk.
+  </Card>
+  <Card title="Tables" icon="list-format">
+    Build structured data with typed columns. Query, filter, sort, and aggregate
+    rows.
+  </Card>
+  <Card title="Email" icon="email">
+    Set up mailboxes, send emails, and manage your inbox from the CLI.
+  </Card>
+  <Card title="Search" icon="magnifier">
+    Search the web, images, and news directly from your terminal.
+  </Card>
+  <Card title="Scrape" icon="external">
+    Extract content from any URL as clean Markdown.
+  </Card>
 </CardGrid>

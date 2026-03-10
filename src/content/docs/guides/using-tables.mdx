@@ -1,0 +1,159 @@
+---
+title: Using Tables
+description: Build structured data with typed columns, and query with filters and aggregation.
+---
+
+import { Steps, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Flowmi tables let you model structured data — task trackers, inventories, CRM records — and query it with filters, sorting, and aggregation, all from the command line.
+
+## Creating a table
+
+Create a new table with a name:
+
+```bash
+flowmi table create -n "Tasks"
+```
+
+Add typed columns at creation time with the `-c` flag and a JSON array of column definitions:
+
+```bash
+flowmi table create -n "Tasks" \
+  -c '[{"name":"title","type":"text"},{"name":"status","type":"enum","options":{"values":["todo","active","done"]}},{"name":"priority","type":"number"},{"name":"due","type":"datetime"}]'
+```
+
+## Column types
+
+Flowmi supports the following column types:
+
+| Type          | Description                              | Example value          |
+|---------------|------------------------------------------|------------------------|
+| `text`        | Free-form string                         | `"Fix login bug"`      |
+| `number`      | Integer or decimal                       | `42`, `3.14`           |
+| `boolean`     | True or false                            | `true`                 |
+| `datetime`    | ISO 8601 date or datetime                | `"2026-03-10"`         |
+| `enum`        | Single value from a defined list         | `"active"`             |
+| `array`       | Multiple values from a defined list      | `["bug","frontend"]`   |
+| `url`         | A valid URL                              | `"https://example.com"`|
+| `email`       | A valid email address                    | `"user@example.com"`   |
+| `json`        | Arbitrary JSON object or array           | `{"key":"value"}`      |
+
+## Managing columns
+
+Add a column to an existing table:
+
+```bash
+flowmi table field add <table-id> --name assignee --type text
+```
+
+Edit a column (rename or change options):
+
+```bash
+flowmi table field edit <table-id> <field-id> --name "owner"
+```
+
+Delete a column:
+
+```bash
+flowmi table field delete <table-id> <field-id>
+```
+
+<Aside type="caution">
+Deleting a column permanently removes that field and its data from every row in the table. This action cannot be undone.
+</Aside>
+
+## Adding rows
+
+Add a row using a JSON object that maps column names to values:
+
+```bash
+flowmi table row create <table-id> --data '{"title":"Fix login bug","status":"todo","priority":1}'
+```
+
+Alternatively, use `--set` for a simpler key-value syntax:
+
+```bash
+flowmi table row create <table-id> --set title="Fix login bug" --set status=todo --set priority=1
+```
+
+### Value coercion
+
+When you use `--set`, Flowmi automatically coerces values:
+
+| Input          | Resulting type | Value    |
+|----------------|---------------|----------|
+| `true`/`false` | boolean       | `true`   |
+| `null`         | null          | `null`   |
+| `42`, `3.14`   | number        | `42`     |
+| Everything else| string        | `"text"` |
+
+Use `--data` with explicit JSON when you need precise control over types.
+
+## Querying rows
+
+This is where tables become powerful. The `flowmi table row query` command supports filtering, sorting, aggregation, and grouping.
+
+### Basic filter
+
+Filter rows where a column matches a condition:
+
+```bash
+flowmi table row query <table-id> --filter status:eq:todo
+```
+
+The filter format is `column:operator:value`. Available operators include `eq`, `neq`, `gt`, `gte`, `lt`, `lte`, `contains`, `startsWith`, `endsWith`.
+
+### Multiple filters (AND logic)
+
+Chain filters with repeated `-f` flags — all must match:
+
+```bash
+flowmi table row query <table-id> -f status:eq:active -f priority:gt:3
+```
+
+### Sorting
+
+Sort results by one or more columns:
+
+```bash
+flowmi table row query <table-id> --sort priority:desc
+```
+
+```bash
+flowmi table row query <table-id> --sort status:asc --sort priority:desc
+```
+
+### Aggregation
+
+Compute aggregate values across all matching rows:
+
+```bash
+# Count all rows
+flowmi table row query <table-id> -a count::total
+
+# Sum a numeric column
+flowmi table row query <table-id> -a sum:revenue:total_revenue
+```
+
+The format is `function:column:alias`. For `count`, the column is omitted.
+
+### Group by
+
+Combine grouping with aggregation to get per-group summaries:
+
+```bash
+flowmi table row query <table-id> -g status -a count::total
+```
+
+### Complex example
+
+Bring it all together — filter active high-priority tasks, sort by due date, and count per assignee:
+
+```bash
+flowmi table row query <table-id> \
+  -f status:eq:active \
+  -f priority:gte:3 \
+  --sort due:asc \
+  -g assignee \
+  -a count::task_count
+```

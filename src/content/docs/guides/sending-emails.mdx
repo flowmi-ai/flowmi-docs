@@ -1,0 +1,117 @@
+---
+title: Sending Emails
+description: Set up mailboxes and send emails from the CLI.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Flowmi lets you send and receive email directly from the command line. Set up a mailbox, fire off messages, and check your inbox — all without leaving the terminal.
+
+## Getting started
+
+<Steps>
+
+1. **Create a mailbox**
+
+   Register an email address as a Flowmi mailbox:
+
+   ```bash
+   flowmi email mailbox create -a hello@example.com -n "Main"
+   ```
+
+2. **Send an email**
+
+   Send a plain-text email from your mailbox:
+
+   ```bash
+   flowmi email send -m <mailbox-id> -t user@example.com -s "Subject" --text "Body of the email"
+   ```
+
+3. **Check sent and received emails**
+
+   List all emails across your mailboxes:
+
+   ```bash
+   flowmi email list
+   ```
+
+   Filter by direction to see only inbound or outbound messages:
+
+   ```bash
+   flowmi email list --direction inbound
+   flowmi email list --direction outbound
+   ```
+
+4. **View email details**
+
+   Inspect the full content and headers of a specific email:
+
+   ```bash
+   flowmi email view <id>
+   ```
+
+</Steps>
+
+## HTML emails
+
+Send rich HTML content using the `--html` flag instead of `--text`:
+
+```bash
+flowmi email send -m <mailbox-id> -t user@example.com -s "Weekly Report" \
+  --html "<h1>Report</h1><p>Everything is on track.</p>"
+```
+
+You can also pipe HTML from a file:
+
+```bash
+flowmi email send -m <mailbox-id> -t user@example.com -s "Newsletter" \
+  --html "$(cat newsletter.html)"
+```
+
+## Multiple recipients
+
+Add multiple recipients by repeating the `-t` flag:
+
+```bash
+flowmi email send -m <mailbox-id> \
+  -t alice@example.com \
+  -t bob@example.com \
+  -s "Team update" \
+  --text "Here is the latest update."
+```
+
+Use `--cc` and `--bcc` for carbon copy and blind carbon copy:
+
+```bash
+flowmi email send -m <mailbox-id> \
+  -t alice@example.com \
+  --cc manager@example.com \
+  --bcc archive@example.com \
+  -s "Project status" \
+  --text "Status update attached."
+```
+
+## Managing mailboxes
+
+List all configured mailboxes:
+
+```bash
+flowmi email mailbox list
+```
+
+Edit a mailbox to change its display name or toggle active status:
+
+```bash
+flowmi email mailbox edit <mailbox-id> -n "Support"
+flowmi email mailbox edit <mailbox-id> --active false
+```
+
+<Aside type="tip">
+Setting `--active false` on a mailbox stops it from receiving new emails without deleting the mailbox or its history.
+</Aside>
+
+Delete a mailbox:
+
+```bash
+flowmi email mailbox delete <mailbox-id>
+```

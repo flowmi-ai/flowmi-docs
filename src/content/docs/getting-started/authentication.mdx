@@ -1,0 +1,29 @@
+---
+title: Authentication
+description: Log in to your Flowmi account.
+---
+
+Before you can use most commands, you need to authenticate with your Flowmi account.
+
+## Log in
+
+Run the login command to open your default browser for authentication:
+
+```bash
+flowmi auth login
+```
+
+This starts an **OAuth2 PKCE** flow. You can sign in with your email or use any supported social login provider. Once you approve access in the browser, the CLI receives a token automatically.
+
+## How tokens work
+
+- Tokens are stored in `~/.config/flowmi/credentials.toml`.
+- When a request receives a **401 Unauthorized** response, the CLI automatically refreshes the token and retries the request. You do not need to log in again manually.
+
+## Check your auth status
+
+To see the currently authenticated user:
+
+```bash
+flowmi auth status
+```

@@ -1,0 +1,60 @@
+---
+title: Installation
+description: How to install the Flowmi CLI.
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+Choose the installation method that works best for your environment.
+
+<Tabs>
+  <TabItem label="Homebrew (recommended)">
+    Install from the official [Homebrew](https://brew.sh) tap:
+
+    ```bash
+    brew install flowmi-ai/tap/flowmi
+    ```
+  </TabItem>
+
+  <TabItem label="curl">
+    Install on macOS or Linux with a single command:
+
+    ```bash
+    curl -fsSL https://flowmi.ai/install | bash
+    ```
+
+    The script detects your OS and architecture, downloads the latest release, and places the binary on your `PATH`.
+  </TabItem>
+
+  <TabItem label="Go install">
+    If you already have **Go 1.25+** installed:
+
+    ```bash
+    go install github.com/flowmi-ai/flowmi@latest
+    ```
+
+    Make sure `$GOBIN` (or `$GOPATH/bin`) is on your `PATH`.
+  </TabItem>
+
+  <TabItem label="Build from source">
+    Clone the repository and build the binary yourself:
+
+    ```bash
+    git clone https://github.com/flowmi-ai/flowmi.git
+    cd flowmi
+    go build -o flowmi .
+    ```
+
+    Move the resulting `flowmi` binary somewhere on your `PATH` (for example, `/usr/local/bin`).
+  </TabItem>
+</Tabs>
+
+## Verify the installation
+
+After installing, confirm that the CLI is available:
+
+```bash
+flowmi version
+```
+
+You should see output showing the installed version, commit hash, and build date. If the command is not found, make sure the install location is on your `PATH`.

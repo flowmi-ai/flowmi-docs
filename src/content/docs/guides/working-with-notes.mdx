@@ -1,0 +1,128 @@
+---
+title: Working with Notes
+description: Create, organize, and manage notes from the command line.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Flowmi notes are a fast way to capture ideas, snippets, and reference material without leaving your terminal. Every note can carry labels for organization and supports full create-read-update-delete lifecycle.
+
+<Aside type="tip">
+You can use the shorter `fm` alias in place of `flowmi` for every command shown here.
+</Aside>
+
+## Creating notes
+
+Create a note with a subject and content:
+
+```bash
+flowmi note create -s "Meeting agenda" -c "Discuss roadmap and Q3 goals"
+```
+
+Attach one or more labels at creation time with the repeatable `-l` flag:
+
+```bash
+flowmi note create -s "API design notes" -c "REST vs GraphQL comparison" -l work -l api
+```
+
+## Listing and searching
+
+List all notes in your workspace:
+
+```bash
+flowmi note list
+```
+
+Filter by label to narrow the results:
+
+```bash
+flowmi note list --label work
+```
+
+Search across subjects and content with free-text search:
+
+```bash
+flowmi note list --search "roadmap"
+```
+
+## Viewing and editing
+
+View the full content of a note by its ID:
+
+```bash
+flowmi note view <id>
+```
+
+Edit the subject, content, or both:
+
+```bash
+flowmi note edit <id> -s "New subject" -c "Updated content"
+```
+
+You can also add or change labels during an edit:
+
+```bash
+flowmi note edit <id> -l design -l urgent
+```
+
+<Aside type="caution">
+Using `--label` (or `-l`) on edit **replaces** all existing labels. Include every label you want the note to keep.
+</Aside>
+
+## Using labels
+
+Labels are lightweight tags you attach to notes for filtering and organization.
+
+- Add labels at creation with `-l` (repeatable): `-l work -l api`
+- Replace labels on an existing note with `flowmi note edit <id> -l newlabel`
+- Filter your list by a single label: `flowmi note list --label work`
+
+There is no separate label-management command — labels are created implicitly when you first use them and disappear when no notes reference them.
+
+## Trash and restore
+
+Deleting a note performs a **soft delete**, moving it to the trash:
+
+```bash
+flowmi note delete <id>
+```
+
+Restore a trashed note back to your workspace:
+
+```bash
+flowmi note restore <id>
+```
+
+Permanently remove a note from the trash:
+
+```bash
+flowmi note trash delete <id>
+```
+
+## Output formats
+
+Every note command that produces output supports the `-o` flag to choose a format.
+
+Plain text (default):
+
+```bash
+flowmi note list -o text
+```
+
+JSON for scripting and piping:
+
+```bash
+flowmi note list -o json
+```
+
+Tabular layout for quick scanning:
+
+```bash
+flowmi note list -o table
+```
+
+This applies to `view` as well:
+
+```bash
+flowmi note view <id> -o json
+```

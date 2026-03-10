@@ -1,0 +1,111 @@
+---
+title: Command Overview
+description: Complete command reference for the Flowmi CLI.
+---
+
+The Flowmi CLI is available as both `flowmi` and the shorter alias `fm`. Every example in this documentation uses `flowmi`, but you can substitute `fm` anywhere.
+
+## Command tree
+
+```
+flowmi
+├── auth
+│   ├── login          Authenticate with Flowmi
+│   └── status         Show current auth status
+├── config
+│   ├── set            Set a configuration value
+│   ├── get            Get a configuration value
+│   └── list (ls)      List all configuration values
+├── note
+│   ├── create         Create a new note
+│   ├── view           View a note
+│   ├── edit           Edit a note
+│   ├── list (ls)      List notes
+│   ├── delete         Delete a note
+│   ├── restore        Restore a note from trash
+│   └── trash          Manage notes in trash
+├── drive
+│   ├── upload         Upload a file
+│   ├── download       Download a file
+│   ├── view           View file metadata
+│   ├── list (ls)      List files
+│   ├── delete         Delete a file
+│   ├── restore        Restore a file from trash
+│   └── trash          Manage files in trash
+├── table
+│   ├── create         Create a table
+│   ├── view           View a table
+│   ├── edit           Edit a table
+│   ├── list (ls)      List tables
+│   ├── delete         Delete a table
+│   ├── restore        Restore a table from trash
+│   ├── trash          Manage tables in trash
+│   ├── field
+│   │   ├── add        Add a column
+│   │   ├── edit       Edit a column
+│   │   └── delete     Delete a column
+│   └── row
+│       ├── create     Create a row
+│       ├── view       View a row
+│       ├── edit       Edit a row
+│       ├── list (ls)  List rows
+│       ├── delete     Delete a row
+│       ├── query      Query rows with filters
+│       ├── restore    Restore a row from trash
+│       └── trash      Manage rows in trash
+├── email
+│   ├── mailbox
+│   │   ├── create     Create a mailbox
+│   │   ├── list (ls)  List mailboxes
+│   │   ├── edit       Edit a mailbox
+│   │   └── delete     Delete a mailbox
+│   ├── send           Send an email
+│   ├── view           View an email
+│   ├── list (ls)      List emails
+│   ├── delete         Delete an email
+│   ├── restore        Restore an email from trash
+│   └── trash          Manage emails in trash
+├── search
+│   ├── web            Search the web
+│   ├── images         Search images
+│   └── news           Search news
+├── scrape             Scrape a web page
+├── completion         Generate shell completions
+├── update             Update the CLI
+├── version            Print version info
+└── options            List global flags
+```
+
+## Global flags
+
+These flags are available on every command.
+
+| Flag | Short | Description | Default |
+|------|-------|-------------|---------|
+| `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
+| `--output` | `-o` | Output format: `text`, `json`, `table` | `text` |
+| `--format` | | Help format: `text`, `json` | `text` |
+| `--help` | `-h` | Show help | |
+
+## Output formats
+
+The `--output` (`-o`) flag controls how results are displayed.
+
+- **text** — Human-readable output designed for interactive use. This is the default.
+- **json** — Machine-readable JSON output. Useful for piping into `jq`, scripting, or integrating with other tools.
+- **table** — Tabular output with aligned columns. Handy for scanning lists of items at a glance.
+
+```bash
+# Default human-readable output
+flowmi note list
+
+# JSON for scripting
+flowmi note list -o json
+
+# Table for quick scanning
+flowmi note list -o table
+```
+
+## Aliases
+
+Most `list` subcommands accept `ls` as a shorter alias. For example, `flowmi note ls` is equivalent to `flowmi note list`.

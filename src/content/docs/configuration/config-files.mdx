@@ -1,0 +1,73 @@
+---
+title: Config Files
+description: Where Flowmi CLI stores its configuration and credentials.
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+## Config directory
+
+Flowmi CLI follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) and stores all configuration under:
+
+```
+~/.config/flowmi/
+```
+
+<FileTree>
+- ~/.config/flowmi/
+  - config.toml
+  - credentials.toml
+</FileTree>
+
+## config.toml
+
+Stores your preferences such as the API server URL and authentication server URL.
+
+```toml
+api_server_url = "https://api.flowmi.ai"
+auth_server_url = "https://flowmi.ai"
+```
+
+## credentials.toml
+
+Stores authentication tokens including your access token, refresh token, and API key. Sensitive values are automatically masked when you run `flowmi config list`.
+
+```toml
+access_token = "eyJ..."
+refresh_token = "eyJ..."
+```
+
+<Aside type="caution">
+Never commit `credentials.toml` to version control. Add `credentials.toml` to your `.gitignore` to prevent accidentally exposing secrets.
+</Aside>
+
+## Precedence
+
+When the same setting is defined in multiple places, Flowmi resolves it in this order (highest priority first):
+
+1. **Environment variables** — e.g. `FLOWMI_API_SERVER_URL`
+2. **Config file** — values in `config.toml`
+3. **Defaults** — built-in defaults
+
+## Managing config
+
+Use the `flowmi config` subcommands to read and write settings without editing files directly:
+
+```sh
+# Set a value
+flowmi config set <key> <value>
+
+# Get a single value
+flowmi config get <key>
+
+# List all current configuration
+flowmi config list
+```
+
+## Custom config path
+
+To use a config file in a non-default location, pass the `--config` flag:
+
+```sh
+flowmi --config /path/to/config.toml <command>
+```

@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import Pagination from '../../../components/blog/Pagination.astro';
+
+export async function getStaticPaths() {
+  const perPage = 12;
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+  const totalPages = Math.ceil(posts.length / perPage);
+
+  // Only generate pages 2+. Page 1 is handled by /blogs/index.astro.
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+    props: { currentPage: i + 2, totalPages },
+  }));
+}
+
+const POSTS_PER_PAGE = 12;
+const { currentPage, totalPages } = Astro.props;
+
+const allPosts = (
+  await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  })
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const posts = allPosts.slice(start, start + POSTS_PER_PAGE);
+---
+
+<BlogLayout
+  title={`Blog — Page ${currentPage}`}
+  description="News, updates, and guides from the Flowmi team."
+>
+  <main class="blog-container">
+    <div class="blog-hero">
+      <h1>Blog</h1>
+      <p>News, updates, and guides from the Flowmi team.</p>
+    </div>
+    <div class="post-grid">
+      {
+        posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            tags={post.data.tags}
+            slug={post.id}
+          />
+        ))
+      }
+    </div>
+    <Pagination currentPage={currentPage} totalPages={totalPages} />
+  </main>
+</BlogLayout>

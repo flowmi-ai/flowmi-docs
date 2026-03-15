@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+const tagCounts = new Map<string, number>();
+posts.forEach((post) => {
+  post.data.tags.forEach((tag: string) => {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  });
+});
+
+const sortedTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
+---
+
+<BlogLayout title="Tags" description="Browse blog posts by tag.">
+  <main class="blog-container">
+    <div class="blog-hero">
+      <h1>Tags</h1>
+      <p>Browse posts by topic.</p>
+    </div>
+    {
+      sortedTags.length > 0 ? (
+        <div class="tags-grid">
+          {sortedTags.map(([tag, count]) => (
+            <a href={`/blogs/tags/${tag}/`} class="tag-card">
+              <span class="tag-card-name">{tag}</span>
+              <span class="tag-card-count">
+                {count} {count === 1 ? 'post' : 'posts'}
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p style="color: var(--blog-text-muted);">No tags yet.</p>
+      )
+    }
+  </main>
+</BlogLayout>

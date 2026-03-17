@@ -5,8 +5,9 @@ import starlight from "@astrojs/starlight";
 // https://astro.build/config
 export default defineConfig({
   site: "https://flowmi.ai",
-  base: "/docs",
-  outDir: "./dist/docs",
+  redirects: {
+    "/": "/docs/",
+  },
   integrations: [
     starlight({
       title: "Flowmi CLI",
@@ -22,13 +23,19 @@ export default defineConfig({
         {
           label: "Getting Started",
           items: [
-            { label: "Introduction", slug: "getting-started/introduction" },
-            { label: "Installation", slug: "getting-started/installation" },
+            {
+              label: "Introduction",
+              slug: "docs/getting-started/introduction",
+            },
+            {
+              label: "Installation",
+              slug: "docs/getting-started/installation",
+            },
             {
               label: "Authentication",
-              slug: "getting-started/authentication",
+              slug: "docs/getting-started/authentication",
             },
-            { label: "Quickstart", slug: "getting-started/quickstart" },
+            { label: "Quickstart", slug: "docs/getting-started/quickstart" },
           ],
         },
         {
@@ -36,81 +43,93 @@ export default defineConfig({
           items: [
             {
               label: "Working with Notes",
-              slug: "guides/working-with-notes",
+              slug: "docs/guides/working-with-notes",
             },
-            { label: "Managing Files", slug: "guides/managing-files" },
-            { label: "Using Tables", slug: "guides/using-tables" },
-            { label: "Sending Emails", slug: "guides/sending-emails" },
+            { label: "Managing Files", slug: "docs/guides/managing-files" },
+            { label: "Using Tables", slug: "docs/guides/using-tables" },
+            { label: "Sending Emails", slug: "docs/guides/sending-emails" },
             {
               label: "Web Search & Scrape",
-              slug: "guides/web-search-and-scrape",
+              slug: "docs/guides/web-search-and-scrape",
             },
           ],
         },
         {
           label: "Commands",
           items: [
-            { label: "Overview", slug: "commands/overview" },
+            { label: "Overview", slug: "docs/commands/overview" },
             {
               label: "auth",
               collapsed: true,
               items: [
-                { label: "auth login", slug: "commands/auth/login" },
-                { label: "auth status", slug: "commands/auth/status" },
+                { label: "auth login", slug: "docs/commands/auth/login" },
+                { label: "auth status", slug: "docs/commands/auth/status" },
               ],
             },
             {
               label: "note",
               collapsed: true,
               items: [
-                { label: "note list", slug: "commands/note/list" },
-                { label: "note create", slug: "commands/note/create" },
-                { label: "note view", slug: "commands/note/view" },
-                { label: "note edit", slug: "commands/note/edit" },
-                { label: "note delete", slug: "commands/note/delete" },
-                { label: "note restore", slug: "commands/note/restore" },
-                { label: "note trash", slug: "commands/note/trash" },
+                { label: "note list", slug: "docs/commands/note/list" },
+                { label: "note create", slug: "docs/commands/note/create" },
+                { label: "note view", slug: "docs/commands/note/view" },
+                { label: "note edit", slug: "docs/commands/note/edit" },
+                { label: "note delete", slug: "docs/commands/note/delete" },
+                {
+                  label: "note restore",
+                  slug: "docs/commands/note/restore",
+                },
+                { label: "note trash", slug: "docs/commands/note/trash" },
               ],
             },
             {
               label: "drive",
               collapsed: true,
               items: [
-                { label: "drive list", slug: "commands/drive/list" },
-                { label: "drive upload", slug: "commands/drive/upload" },
-                { label: "drive download", slug: "commands/drive/download" },
-                { label: "drive view", slug: "commands/drive/view" },
-                { label: "drive delete", slug: "commands/drive/delete" },
-                { label: "drive restore", slug: "commands/drive/restore" },
-                { label: "drive trash", slug: "commands/drive/trash" },
+                { label: "drive list", slug: "docs/commands/drive/list" },
+                { label: "drive upload", slug: "docs/commands/drive/upload" },
+                {
+                  label: "drive download",
+                  slug: "docs/commands/drive/download",
+                },
+                { label: "drive view", slug: "docs/commands/drive/view" },
+                { label: "drive delete", slug: "docs/commands/drive/delete" },
+                {
+                  label: "drive restore",
+                  slug: "docs/commands/drive/restore",
+                },
+                { label: "drive trash", slug: "docs/commands/drive/trash" },
               ],
             },
             {
               label: "table",
               collapsed: true,
               items: [
-                { label: "table list", slug: "commands/table/list" },
-                { label: "table create", slug: "commands/table/create" },
-                { label: "table view", slug: "commands/table/view" },
-                { label: "table edit", slug: "commands/table/edit" },
-                { label: "table delete", slug: "commands/table/delete" },
-                { label: "table restore", slug: "commands/table/restore" },
-                { label: "table trash", slug: "commands/table/trash" },
+                { label: "table list", slug: "docs/commands/table/list" },
+                { label: "table create", slug: "docs/commands/table/create" },
+                { label: "table view", slug: "docs/commands/table/view" },
+                { label: "table edit", slug: "docs/commands/table/edit" },
+                { label: "table delete", slug: "docs/commands/table/delete" },
+                {
+                  label: "table restore",
+                  slug: "docs/commands/table/restore",
+                },
+                { label: "table trash", slug: "docs/commands/table/trash" },
                 {
                   label: "table field",
                   collapsed: true,
                   items: [
                     {
                       label: "table field add",
-                      slug: "commands/table/field/add",
+                      slug: "docs/commands/table/field/add",
                     },
                     {
                       label: "table field edit",
-                      slug: "commands/table/field/edit",
+                      slug: "docs/commands/table/field/edit",
                     },
                     {
                       label: "table field delete",
-                      slug: "commands/table/field/delete",
+                      slug: "docs/commands/table/field/delete",
                     },
                   ],
                 },
@@ -120,35 +139,35 @@ export default defineConfig({
                   items: [
                     {
                       label: "table row list",
-                      slug: "commands/table/row/list",
+                      slug: "docs/commands/table/row/list",
                     },
                     {
                       label: "table row create",
-                      slug: "commands/table/row/create",
+                      slug: "docs/commands/table/row/create",
                     },
                     {
                       label: "table row view",
-                      slug: "commands/table/row/view",
+                      slug: "docs/commands/table/row/view",
                     },
                     {
                       label: "table row edit",
-                      slug: "commands/table/row/edit",
+                      slug: "docs/commands/table/row/edit",
                     },
                     {
                       label: "table row delete",
-                      slug: "commands/table/row/delete",
+                      slug: "docs/commands/table/row/delete",
                     },
                     {
                       label: "table row restore",
-                      slug: "commands/table/row/restore",
+                      slug: "docs/commands/table/row/restore",
                     },
                     {
                       label: "table row query",
-                      slug: "commands/table/row/query",
+                      slug: "docs/commands/table/row/query",
                     },
                     {
                       label: "table row trash",
-                      slug: "commands/table/row/trash",
+                      slug: "docs/commands/table/row/trash",
                     },
                   ],
                 },
@@ -158,31 +177,34 @@ export default defineConfig({
               label: "email",
               collapsed: true,
               items: [
-                { label: "email list", slug: "commands/email/list" },
-                { label: "email view", slug: "commands/email/view" },
-                { label: "email send", slug: "commands/email/send" },
-                { label: "email delete", slug: "commands/email/delete" },
-                { label: "email restore", slug: "commands/email/restore" },
-                { label: "email trash", slug: "commands/email/trash" },
+                { label: "email list", slug: "docs/commands/email/list" },
+                { label: "email view", slug: "docs/commands/email/view" },
+                { label: "email send", slug: "docs/commands/email/send" },
+                { label: "email delete", slug: "docs/commands/email/delete" },
+                {
+                  label: "email restore",
+                  slug: "docs/commands/email/restore",
+                },
+                { label: "email trash", slug: "docs/commands/email/trash" },
                 {
                   label: "email mailbox",
                   collapsed: true,
                   items: [
                     {
                       label: "email mailbox list",
-                      slug: "commands/email/mailbox/list",
+                      slug: "docs/commands/email/mailbox/list",
                     },
                     {
                       label: "email mailbox create",
-                      slug: "commands/email/mailbox/create",
+                      slug: "docs/commands/email/mailbox/create",
                     },
                     {
                       label: "email mailbox edit",
-                      slug: "commands/email/mailbox/edit",
+                      slug: "docs/commands/email/mailbox/edit",
                     },
                     {
                       label: "email mailbox delete",
-                      slug: "commands/email/mailbox/delete",
+                      slug: "docs/commands/email/mailbox/delete",
                     },
                   ],
                 },
@@ -192,28 +214,37 @@ export default defineConfig({
               label: "search",
               collapsed: true,
               items: [
-                { label: "search web", slug: "commands/search/web" },
-                { label: "search images", slug: "commands/search/images" },
-                { label: "search news", slug: "commands/search/news" },
+                { label: "search web", slug: "docs/commands/search/web" },
+                {
+                  label: "search images",
+                  slug: "docs/commands/search/images",
+                },
+                { label: "search news", slug: "docs/commands/search/news" },
               ],
             },
-            { label: "scrape", slug: "commands/scrape" },
-            { label: "config", slug: "commands/config" },
-            { label: "version", slug: "commands/version" },
-            { label: "update", slug: "commands/update" },
-            { label: "completion", slug: "commands/completion" },
-            { label: "options", slug: "commands/options" },
+            { label: "scrape", slug: "docs/commands/scrape" },
+            { label: "config", slug: "docs/commands/config" },
+            { label: "version", slug: "docs/commands/version" },
+            { label: "update", slug: "docs/commands/update" },
+            { label: "completion", slug: "docs/commands/completion" },
+            { label: "options", slug: "docs/commands/options" },
           ],
         },
         {
           label: "Configuration",
           items: [
-            { label: "Config Files", slug: "configuration/config-files" },
+            {
+              label: "Config Files",
+              slug: "docs/configuration/config-files",
+            },
             {
               label: "Environment Variables",
-              slug: "configuration/environment-variables",
+              slug: "docs/configuration/environment-variables",
             },
-            { label: "Output Formats", slug: "configuration/output-formats" },
+            {
+              label: "Output Formats",
+              slug: "docs/configuration/output-formats",
+            },
           ],
         },
       ],

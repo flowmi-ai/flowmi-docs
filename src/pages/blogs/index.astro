@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import Pagination from '../../components/blog/Pagination.astro';
+
+const POSTS_PER_PAGE = 12;
+
+const allPosts = (
+  await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  })
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const posts = allPosts.slice(0, POSTS_PER_PAGE);
+---
+
+<BlogLayout title="Blog" description="News, updates, and guides from the Flowmi team.">
+  <main class="blog-container">
+    <div class="blog-hero">
+      <h1>Blog</h1>
+      <p>News, updates, and guides from the Flowmi team.</p>
+    </div>
+    {
+      posts.length > 0 ? (
+        <>
+          <div class="post-grid">
+            {posts.map((post) => (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description}
+                date={post.data.date}
+                tags={post.data.tags}
+                slug={post.id}
+              />
+            ))}
+          </div>
+          <Pagination currentPage={1} totalPages={totalPages} />
+        </>
+      ) : (
+        <p style="color: var(--blog-text-muted);">No posts yet. Check back soon.</p>
+      )
+    }
+  </main>
+</BlogLayout>

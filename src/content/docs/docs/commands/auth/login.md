@@ -11,16 +11,17 @@ flowmi auth login [flags]
 
 ## Description
 
-Authenticate with your Flowmi account. By default, this opens your web browser to complete the login flow. Once authenticated, credentials are stored locally so subsequent commands can access the API.
+Authenticate with your Flowmi account. By default, this opens your web browser for OAuth2 login (supports social login). Once authenticated, credentials are stored locally so subsequent commands can access the API.
 
-For headless environments, use `--no-browser` to print the login URL instead of opening a browser, or pass `--email` and `--password` to log in directly without a browser.
+Use `--with-token` to provide a setup token (`fst_`) or API key (`flk_`) directly. If no value is given, the token is read from stdin.
+
+Use `--no-browser` to print the login URL instead of opening the browser automatically.
 
 ## Flags
 
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
-| `--email` | | Email address for direct login (skips browser) | |
-| `--password` | | Password for direct login (used with `--email`) | |
+| `--with-token` | | Setup token (`fst_`) or API key (`flk_`); reads from stdin if no value given | |
 | `--no-browser` | | Print login URL instead of opening browser | |
 
 ## Inherited Flags
@@ -35,14 +36,20 @@ For headless environments, use `--no-browser` to print the login URL instead of 
 ## Examples
 
 ```bash
-# Browser login (default)
+# Browser login (default, supports social login)
 flowmi auth login
 
 # Print URL instead of opening browser
 flowmi auth login --no-browser
 
-# Direct login with email and password
-flowmi auth login --email user@example.com --password "$FLOWMI_PASSWORD"
+# Login with a setup token
+flowmi auth login --with-token fst_...
+
+# Login with an API key
+flowmi auth login --with-token flk_...
+
+# Pipe a token from stdin
+echo "fst_..." | flowmi auth login --with-token
 ```
 
 ## See Also

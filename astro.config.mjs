@@ -223,6 +223,26 @@ export default defineConfig({
               ],
             },
             { label: "scrape", slug: "docs/commands/scrape" },
+            {
+              label: "image",
+              collapsed: true,
+              items: [
+                {
+                  label: "image generate",
+                  slug: "docs/commands/image/generate",
+                },
+              ],
+            },
+            {
+              label: "video",
+              collapsed: true,
+              items: [
+                {
+                  label: "video generate",
+                  slug: "docs/commands/video/generate",
+                },
+              ],
+            },
             { label: "config", slug: "docs/commands/config" },
             { label: "version", slug: "docs/commands/version" },
             { label: "update", slug: "docs/commands/update" },

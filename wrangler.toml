@@ -3,7 +3,9 @@ compatibility_date = "2025-03-10"
 
 routes = [
   { pattern = "flowmi.ai/docs*", zone_name = "flowmi.ai" },
-  { pattern = "flowmi.ai/blogs*", zone_name = "flowmi.ai" }
+  { pattern = "flowmi.ai/blogs*", zone_name = "flowmi.ai" },
+  { pattern = "flowmi.ai/_astro/*", zone_name = "flowmi.ai" },
+  { pattern = "flowmi.ai/pagefind/*", zone_name = "flowmi.ai" }
 ]
 
 [assets]

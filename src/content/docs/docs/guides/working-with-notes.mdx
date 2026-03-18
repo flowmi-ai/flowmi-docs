@@ -99,30 +99,11 @@ Permanently remove a note from the trash:
 flowmi note trash delete <id>
 ```
 
-## Output formats
+## JSON output
 
-Every note command that produces output supports the `-o` flag to choose a format.
-
-Plain text (default):
+Every note command supports `--json` for machine-readable output:
 
 ```bash
-flowmi note list -o text
-```
-
-JSON for scripting and piping:
-
-```bash
-flowmi note list -o json
-```
-
-Tabular layout for quick scanning:
-
-```bash
-flowmi note list -o table
-```
-
-This applies to `view` as well:
-
-```bash
-flowmi note view <id> -o json
+flowmi note list --json
+flowmi note view <id> --json
 ```

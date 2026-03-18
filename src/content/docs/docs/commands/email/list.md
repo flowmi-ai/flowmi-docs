@@ -28,7 +28,8 @@ List emails. Returns emails in reverse-chronological order by default.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 
@@ -38,7 +39,7 @@ List emails. Returns emails in reverse-chronological order by default.
 flowmi email list
 flowmi email ls -L 10
 flowmi email list --direction inbound
-flowmi email list -d outbound -o json
+flowmi email list -d outbound --json
 ```
 
 ## See Also

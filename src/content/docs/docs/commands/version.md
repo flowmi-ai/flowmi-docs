@@ -24,5 +24,5 @@ This command has no flags.
 flowmi version
 
 # Get version as JSON (useful for bug reports or scripting)
-flowmi version -o json
+flowmi version --json
 ```

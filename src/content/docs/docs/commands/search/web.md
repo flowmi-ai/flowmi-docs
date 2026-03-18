@@ -27,7 +27,8 @@ Search the web. `web` is the default subcommand -- `flowmi search "query"` is eq
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 
@@ -37,7 +38,7 @@ Search the web. `web` is the default subcommand -- `flowmi search "query"` is eq
 flowmi search "golang context"
 flowmi search web "golang context" -L 5
 flowmi search "rust vs go" --country us --language en
-flowmi search "latest news" -o json
+flowmi search "latest news" --json
 ```
 
 ## See Also

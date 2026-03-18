@@ -28,7 +28,8 @@ List files in drive.
 | Flag | Short | Description |
 |------|-------|-------------|
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format |
+| `--json` | | Output as JSON |
+| `--debug` | | Enable debug logging |
 | `--format` | | Format string |
 | `--help` | `-h` | Show help |
 
@@ -38,7 +39,7 @@ List files in drive.
 flowmi drive list
 flowmi drive ls -L 10
 flowmi drive list --prefix /docs
-flowmi drive list -o json
+flowmi drive list --json
 ```
 
 ## See Also

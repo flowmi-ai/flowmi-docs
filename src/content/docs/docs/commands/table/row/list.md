@@ -25,7 +25,8 @@ List rows in a table. Returns rows in reverse-chronological order by default.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 
@@ -34,7 +35,7 @@ List rows in a table. Returns rows in reverse-chronological order by default.
 ```sh
 flowmi table row list abc123
 flowmi table row list abc123 -L 50 -p 2
-flowmi table row list abc123 -o json
+flowmi table row list abc123 --json
 ```
 
 ## See Also

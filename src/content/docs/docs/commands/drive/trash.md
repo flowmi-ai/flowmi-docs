@@ -68,7 +68,8 @@ flowmi drive trash delete <id>
 | Flag | Short | Description |
 |------|-------|-------------|
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format |
+| `--json` | | Output as JSON |
+| `--debug` | | Enable debug logging |
 | `--format` | | Format string |
 | `--help` | `-h` | Show help |
 

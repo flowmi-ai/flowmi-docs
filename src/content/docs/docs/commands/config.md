@@ -87,7 +87,7 @@ flowmi config list
 flowmi config ls
 
 # Output as JSON
-flowmi config list -o json
+flowmi config list --json
 ```
 
 ## Inherited Flags
@@ -95,6 +95,7 @@ flowmi config list -o json
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json`, `table` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |

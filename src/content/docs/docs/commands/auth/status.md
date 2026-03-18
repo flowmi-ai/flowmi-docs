@@ -22,7 +22,8 @@ This command has no command-specific flags.
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json`, `table` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |
 
@@ -33,7 +34,7 @@ This command has no command-specific flags.
 flowmi auth status
 
 # Get status as JSON (useful for scripting)
-flowmi auth status -o json
+flowmi auth status --json
 ```
 
 ## See Also

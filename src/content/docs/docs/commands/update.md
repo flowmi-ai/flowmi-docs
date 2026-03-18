@@ -26,7 +26,8 @@ Update the Flowmi CLI to the latest version. The command downloads the latest re
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json`, `table` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |
 

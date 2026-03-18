@@ -18,7 +18,8 @@ Display metadata for a file including name, path, size, MIME type, and timestamp
 | Flag | Short | Description |
 |------|-------|-------------|
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format |
+| `--json` | | Output as JSON |
+| `--debug` | | Enable debug logging |
 | `--format` | | Format string |
 | `--help` | `-h` | Show help |
 
@@ -27,7 +28,7 @@ Display metadata for a file including name, path, size, MIME type, and timestamp
 ```sh
 flowmi drive view /docs/readme.txt
 flowmi drive view abc-123-uuid
-flowmi drive view /docs/readme.txt -o json
+flowmi drive view /docs/readme.txt --json
 ```
 
 ## See Also

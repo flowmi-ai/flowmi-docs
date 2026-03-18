@@ -1,6 +1,6 @@
 ---
 title: scrape
-description: Fetch and extract content from a web page.
+description: Fetch and extract content from a web page as markdown.
 ---
 
 ## Synopsis
@@ -11,7 +11,7 @@ flowmi scrape <url>
 
 ## Description
 
-Fetch and extract content from a web page. The command downloads the page, strips navigation and boilerplate, and returns the main content as Markdown. If Markdown extraction fails, it falls back to plain text. Requests have a 60-second timeout.
+Fetch and extract content from a web page as markdown. The command downloads the page, strips navigation and boilerplate, and returns the main content as Markdown. Requests have a 60-second timeout.
 
 ## Flags
 
@@ -22,7 +22,8 @@ This command has no command-specific flags.
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |
 
@@ -33,7 +34,7 @@ This command has no command-specific flags.
 flowmi scrape https://example.com
 
 # Get scraped content as JSON
-flowmi scrape https://example.com -o json
+flowmi scrape https://example.com --json
 ```
 
 ## See Also

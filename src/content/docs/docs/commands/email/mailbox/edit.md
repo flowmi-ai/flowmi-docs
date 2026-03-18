@@ -25,7 +25,8 @@ Edit a mailbox. At least one of `--display-name` or `--active` must be provided.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 

@@ -28,7 +28,8 @@ Search news articles.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 

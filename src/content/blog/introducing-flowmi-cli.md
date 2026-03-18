@@ -22,7 +22,7 @@ Flowmi is a single Go binary (or `fm` for short) that gives any AI agent — or 
 - **Tables** — structured data with typed columns, filters, and aggregation
 - **Images** — generate and edit images with AI models
 
-Every command supports `--output json`. That's the whole point: structured, parseable output that an agent can actually work with — no screen-scraping, no regex, no guessing.
+Every command supports `--json`. That's the whole point: structured, parseable output that an agent can actually work with — no screen-scraping, no regex, no guessing.
 
 ## The problem we kept hitting
 
@@ -37,7 +37,7 @@ Here's what it looks like in practice. Every example below is a real command wit
 ### Search the web and get JSON back
 
 ```bash
-$ flowmi search "best practices for LLM tool use" -L 3 -o json
+$ flowmi search "best practices for LLM tool use" -L 3 --json
 ```
 
 Your agent gets back a clean JSON array — title, URL, snippet — ready to feed into the next step of its reasoning chain. No HTML parsing. No browser automation.
@@ -82,7 +82,7 @@ $ flowmi table row query <table-id> \
     -f status:eq:qualified \
     -f score:gt:80 \
     --sort score:desc \
-    -o json
+    --json
 ```
 
 Tables support nine column types (`text`, `number`, `boolean`, `datetime`, `enum`, `array`, `url`, `email`, `json`), filtering with operators like `eq`, `gt`, `contains`, `startsWith`, and aggregation with `count`, `sum`, `avg`, `min`, `max`. It's a queryable database your agent can spin up in one command.
@@ -91,7 +91,7 @@ Tables support nine column types (`text`, `number`, `boolean`, `datetime`, `enum
 
 ```bash
 $ flowmi image generate -p "A minimal logo for a developer tool, flat design" \
-    --size 2K --aspect-ratio 1:1 -f logo.png
+    --size 2K --aspect-ratio 1:1 -o logo.png
 ```
 
 Or edit an existing image with a reference:
@@ -100,13 +100,13 @@ Or edit an existing image with a reference:
 $ flowmi image generate -p "Remove the background" -i photo.jpg
 ```
 
-With `-o json`, you get back base64-encoded image data — perfect for agents that need to process images programmatically.
+With `--json`, you get back base64-encoded image data — perfect for agents that need to process images programmatically.
 
 ## Why JSON output matters
 
-This is the design decision that makes everything else work. Every Flowmi command supports `--output json` (`-o json`). Most commands also support `--output table` for quick scanning in the terminal. The default is always human-readable text.
+This is the design decision that makes everything else work. Every Flowmi command supports `--json`. The default is always human-readable text.
 
-When an AI agent calls `flowmi search "query" -o json`, it gets back data it can parse, reason about, and act on. No ambiguity, no brittle text extraction. The agent decides what to do next based on structured data, not string matching.
+When an AI agent calls `flowmi search "query" --json`, it gets back data it can parse, reason about, and act on. No ambiguity, no brittle text extraction. The agent decides what to do next based on structured data, not string matching.
 
 This is what makes Flowmi different from cobbling together five different CLI tools: **one consistent interface, one authentication, one output format**.
 
@@ -116,7 +116,7 @@ Here's a realistic example of what an agent can do by chaining Flowmi commands:
 
 ```bash
 # 1. Search for recent articles on a topic
-flowmi search "AI agent frameworks 2026" -L 5 -o json
+flowmi search "AI agent frameworks 2026" -L 5 --json
 
 # 2. Scrape the top result for full content
 flowmi scrape https://example.com/top-result
@@ -154,7 +154,7 @@ flowmi auth login
 Then try it:
 
 ```bash
-flowmi search "hello world" -o json
+flowmi search "hello world" --json
 ```
 
 If JSON comes back, you're ready. Head over to the [quickstart guide](/docs/getting-started/quickstart/) to explore all seven tools, or browse the [command reference](/docs/commands/overview/) for every flag and option.

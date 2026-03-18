@@ -28,7 +28,8 @@ Search for images.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 
@@ -37,7 +38,7 @@ Search for images.
 ```sh
 flowmi search images "gopher mascot"
 flowmi search images "gopher mascot" --size large
-flowmi search images "sunset landscape" -L 20 -o json
+flowmi search images "sunset landscape" -L 20 --json
 ```
 
 ## See Also

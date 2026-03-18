@@ -26,14 +26,15 @@ When using `--video-url` for video editing, the source video duration is capped 
 | `--model` | `-m` | Model: `grok-imagine-video` | `grok-imagine-video` |
 | `--aspect-ratio` | `-a` | Output aspect ratio: `auto`, `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3` | `auto` |
 | `--resolution` | `-r` | Output resolution: `480p`, `720p` | `480p` |
-| `--output-file` | `-f` | Output file path | `generated_<timestamp>.mp4` |
+| `--output` | `-o` | Output file path | `generated_<timestamp>.mp4` |
 
 ## Inherited Flags
 
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |
 
@@ -53,7 +54,7 @@ flowmi video generate -p "Animate this scene" -i photo.jpg -d 5
 flowmi video generate -p "Change the car color to red" --video-url https://example.com/video.mp4 -d 5
 
 # Save to a specific file
-flowmi video generate -p "Ocean waves" -d 8 -f waves.mp4
+flowmi video generate -p "Ocean waves" -d 8 -o waves.mp4
 ```
 
 ## See Also

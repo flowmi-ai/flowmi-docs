@@ -25,18 +25,11 @@ fm note list       # same thing
 
 ## Output formats
 
-Most commands support the `-o` flag to control the output format:
-
-| Flag        | Format            | Best for                  |
-| ----------- | ----------------- | ------------------------- |
-| `-o text`   | Plain text        | Human reading (default)   |
-| `-o json`   | JSON              | Scripting and piping      |
-| `-o table`  | ASCII table       | Tabular data at a glance  |
+By default, commands produce human-readable text. Add `--json` to get machine-readable JSON output for scripting and piping:
 
 ```bash
-flowmi note list -o json          # JSON output
-flowmi note list -o table         # table output
 flowmi note list                  # plain text (default)
+flowmi note list --json           # JSON output
 ```
 
 ## Configuration

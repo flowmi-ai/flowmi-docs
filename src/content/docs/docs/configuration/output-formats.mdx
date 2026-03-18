@@ -5,21 +5,17 @@ description: Control how Flowmi CLI displays output.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-Flowmi CLI supports three output formats controlled by the `--output` (or `-o`) flag: **text**, **json**, and **table**.
+Flowmi CLI outputs human-readable text by default. Pass the `--json` global flag to get machine-readable JSON instead.
 
 ## Formats
 
 ### text (default)
 
-Human-readable, styled output. This is the default when no `--output` flag is provided.
+Human-readable, styled output. This is the default.
 
 ### json
 
-Machine-readable JSON, ideal for scripting and piping to tools like `jq`.
-
-### table
-
-Tabular format with aligned columns.
+Machine-readable JSON, ideal for scripting and piping to tools like `jq`. Enabled with the `--json` flag.
 
 ## Comparison
 
@@ -46,27 +42,20 @@ Showing 2 notes
 ]
 ```
 </TabItem>
-<TabItem label="table">
-```
-ID       SUBJECT        CREATED     LABELS
-abc123   Meeting Notes  2024-01-15  work, urgent
-def456   Quick Thought  2024-01-14
-```
-</TabItem>
 </Tabs>
 
 ## Scripting with JSON
 
-Use the `json` format together with `jq` to extract and transform data:
+Use `--json` together with `jq` to extract and transform data:
 
 ```sh
 # Get IDs only
-flowmi note list -o json | jq '.[].id'
+flowmi note list --json | jq '.[].id'
 
 # Count notes
-flowmi note list -o json | jq 'length'
+flowmi note list --json | jq 'length'
 ```
 
 ## Help format
 
-The `--format json` flag is a separate option that outputs help text as JSON. This is distinct from the `--output` flag which controls command result formatting.
+The `--format json` flag is a separate option that outputs help text as JSON. This is distinct from the `--json` flag which controls command result formatting.

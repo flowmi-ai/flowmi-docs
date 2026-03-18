@@ -83,27 +83,24 @@ These flags are available on every command.
 | Flag | Short | Description | Default |
 |------|-------|-------------|---------|
 | `--config` | | Path to config file | `~/.config/flowmi/config.toml` |
-| `--output` | `-o` | Output format: `text`, `json`, `table` | `text` |
+| `--json` | | Output in JSON format | |
+| `--debug` | | Enable debug logging (HTTP requests/responses) | |
 | `--format` | | Help format: `text`, `json` | `text` |
 | `--help` | `-h` | Show help | |
 
 ## Output formats
 
-The `--output` (`-o`) flag controls how results are displayed.
+The `--json` flag switches output from human-readable text to machine-readable JSON.
 
-- **text** — Human-readable output designed for interactive use. This is the default.
+- **text** (default) — Human-readable output designed for interactive use.
 - **json** — Machine-readable JSON output. Useful for piping into `jq`, scripting, or integrating with other tools.
-- **table** — Tabular output with aligned columns. Handy for scanning lists of items at a glance.
 
 ```bash
 # Default human-readable output
 flowmi note list
 
 # JSON for scripting
-flowmi note list -o json
-
-# Table for quick scanning
-flowmi note list -o table
+flowmi note list --json
 ```
 
 ## Aliases

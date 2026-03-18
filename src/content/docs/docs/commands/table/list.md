@@ -27,7 +27,8 @@ List tables. Returns tables in reverse-chronological order by default.
 | Flag | Short | Description |
 | --- | --- | --- |
 | `--config` | | Path to configuration file |
-| `--output` | `-o` | Output format (`text`, `json`, `table`) |
+| `--json` | | Output in JSON format |
+| `--debug` | | Enable debug logging |
 | `--format` | | Help format: `text`, `json` |
 | `--help` | `-h` | Show help for the command |
 
@@ -36,7 +37,7 @@ List tables. Returns tables in reverse-chronological order by default.
 ```sh
 flowmi table list
 flowmi table ls -L 10
-flowmi table list -o json
+flowmi table list --json
 ```
 
 ## See Also

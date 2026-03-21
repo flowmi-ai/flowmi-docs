@@ -1,6 +1,6 @@
 ---
-title: Sending Emails
-description: Set up mailboxes and send emails from the CLI.
+title: Sending & Managing Emails
+description: Set up mailboxes, send emails, and manage your inbox from the CLI.
 ---
 
 import { Steps, Aside } from '@astrojs/starlight/components';
@@ -89,6 +89,41 @@ flowmi email send -m <mailbox-id> \
   --bcc archive@example.com \
   -s "Project status" \
   --text "Status update attached."
+```
+
+## Archiving emails
+
+Archive emails to keep your inbox clean without deleting them:
+
+```bash
+flowmi email archive <id>
+```
+
+View archived emails:
+
+```bash
+flowmi email list --archived
+```
+
+Unarchive an email to move it back to the inbox:
+
+```bash
+flowmi email unarchive <id>
+```
+
+## Read and unread
+
+Mark an email as read or unread:
+
+```bash
+flowmi email read <id>
+flowmi email unread <id>
+```
+
+List only unread emails:
+
+```bash
+flowmi email list --unread
 ```
 
 ## Managing mailboxes

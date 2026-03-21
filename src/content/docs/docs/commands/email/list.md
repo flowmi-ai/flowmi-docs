@@ -26,6 +26,8 @@ List emails. Returns emails in reverse-chronological order by default.
 | `--read` | | Show only read emails | |
 | `--unread` | | Show only unread emails | |
 
+`--read` and `--unread` are mutually exclusive.
+
 ## Inherited Flags
 
 | Flag | Short | Description |

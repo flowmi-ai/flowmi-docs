@@ -15,7 +15,7 @@ const { icon, title, ...attributes } = Astro.props;
 	<p class="title sl-flex">
 		{icon && <Icon name={icon} class="icon" size="1.333em" />}
 		<a {...attributes}>
-			<span set:html={title} />
+			<span set:text={title} />
 		</a>
 	</p>
 	<div class="body"><slot /></div>
@@ -33,19 +33,19 @@ const { icon, title, ...attributes } = Astro.props;
 			gap: clamp(0.5rem, calc(0.125rem + 1vw), 1rem);
 			position: relative;
 		}
-		.card:nth-child(4n + 1) {
+		.card:nth-child(5n + 1) {
 			--sl-card-border: var(--sl-color-orange);
 			--sl-card-bg: var(--sl-color-orange-low);
 		}
-		.card:nth-child(4n + 3) {
+		.card:nth-child(5n + 3) {
 			--sl-card-border: var(--sl-color-green);
 			--sl-card-bg: var(--sl-color-green-low);
 		}
-		.card:nth-child(4n + 4) {
+		.card:nth-child(5n + 4) {
 			--sl-card-border: var(--sl-color-red);
 			--sl-card-bg: var(--sl-color-red-low);
 		}
-		.card:nth-child(4n + 5) {
+		.card:nth-child(5n + 5) {
 			--sl-card-border: var(--sl-color-blue);
 			--sl-card-bg: var(--sl-color-blue-low);
 		}

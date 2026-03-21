@@ -47,7 +47,7 @@ export default defineConfig({
             },
             { label: "Managing Files", slug: "docs/guides/managing-files" },
             { label: "Using Tables", slug: "docs/guides/using-tables" },
-            { label: "Sending Emails", slug: "docs/guides/sending-emails" },
+            { label: "Sending & Managing Emails", slug: "docs/guides/sending-emails" },
             {
               label: "Web Search & Scrape",
               slug: "docs/guides/web-search-and-scrape",

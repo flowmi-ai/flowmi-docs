@@ -44,6 +44,7 @@ flowmi email ls -L 10
 flowmi email list --direction inbound
 flowmi email list -d outbound --json
 flowmi email list --unread
+flowmi email list --read
 flowmi email list --archived
 ```
 

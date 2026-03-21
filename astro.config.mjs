@@ -52,6 +52,14 @@ export default defineConfig({
               label: "Web Search & Scrape",
               slug: "docs/guides/web-search-and-scrape",
             },
+            {
+              label: "Generating Images",
+              slug: "docs/guides/generating-images",
+            },
+            {
+              label: "Generating Videos",
+              slug: "docs/guides/generating-videos",
+            },
           ],
         },
         {

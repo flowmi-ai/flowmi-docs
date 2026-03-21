@@ -22,6 +22,9 @@ List emails. Returns emails in reverse-chronological order by default.
 | `--limit` | `-L` | Maximum number of emails to return | `30` |
 | `--page` | `-p` | Page number | `1` |
 | `--direction` | `-d` | Filter by direction (`inbound`, `outbound`) | |
+| `--archived` | | Show only archived emails | |
+| `--read` | | Show only read emails | |
+| `--unread` | | Show only unread emails | |
 
 ## Inherited Flags
 
@@ -40,9 +43,13 @@ flowmi email list
 flowmi email ls -L 10
 flowmi email list --direction inbound
 flowmi email list -d outbound --json
+flowmi email list --unread
+flowmi email list --archived
 ```
 
 ## See Also
 
 - [email view](/docs/commands/email/view/)
 - [email send](/docs/commands/email/send/)
+- [email archive](/docs/commands/email/archive/)
+- [email read](/docs/commands/email/read/)

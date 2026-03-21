@@ -180,6 +180,16 @@ export default defineConfig({
                 { label: "email list", slug: "docs/commands/email/list" },
                 { label: "email view", slug: "docs/commands/email/view" },
                 { label: "email send", slug: "docs/commands/email/send" },
+                {
+                  label: "email archive",
+                  slug: "docs/commands/email/archive",
+                },
+                {
+                  label: "email unarchive",
+                  slug: "docs/commands/email/unarchive",
+                },
+                { label: "email read", slug: "docs/commands/email/read" },
+                { label: "email unread", slug: "docs/commands/email/unread" },
                 { label: "email delete", slug: "docs/commands/email/delete" },
                 {
                   label: "email restore",

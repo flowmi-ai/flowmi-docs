@@ -76,7 +76,8 @@ const { icon, title, ...attributes } = Astro.props;
 			position: absolute;
 			inset: 0;
 		}
-		.card:hover {
+		.card:hover,
+		.card:has(a:focus-visible) {
 			background: var(--sl-color-gray-7, var(--sl-color-gray-6));
 			border-color: var(--sl-color-gray-2);
 		}

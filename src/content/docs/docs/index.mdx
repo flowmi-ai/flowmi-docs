@@ -14,34 +14,35 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { CardGrid } from "@astrojs/starlight/components";
+import LinkCard from "../../../components/LinkCard.astro";
 
 ## What you can do
 
 <CardGrid>
-  <Card title="Notes" icon="pencil" href="/docs/guides/working-with-notes/">
+  <LinkCard title="Notes" icon="pencil" href="/docs/guides/working-with-notes/">
     Create, edit, search, and organize notes with labels.
-  </Card>
-  <Card title="Drive" icon="document" href="/docs/guides/managing-files/">
+  </LinkCard>
+  <LinkCard title="Drive" icon="document" href="/docs/guides/managing-files/">
     Upload and download files. Pipe content from stdin or save to disk.
-  </Card>
-  <Card title="Tables" icon="list-format" href="/docs/guides/using-tables/">
+  </LinkCard>
+  <LinkCard title="Tables" icon="list-format" href="/docs/guides/using-tables/">
     Build structured data with typed columns. Query, filter, sort, and aggregate
     rows.
-  </Card>
-  <Card title="Email" icon="email" href="/docs/guides/sending-emails/">
+  </LinkCard>
+  <LinkCard title="Email" icon="email" href="/docs/guides/sending-emails/">
     Set up mailboxes, send emails, and manage your inbox from the CLI.
-  </Card>
-  <Card title="Search" icon="magnifier" href="/docs/guides/web-search-and-scrape/">
+  </LinkCard>
+  <LinkCard title="Search" icon="magnifier" href="/docs/guides/web-search-and-scrape/">
     Search the web, images, and news directly from your terminal.
-  </Card>
-  <Card title="Scrape" icon="external" href="/docs/guides/web-search-and-scrape/#scraping-urls">
+  </LinkCard>
+  <LinkCard title="Scrape" icon="external" href="/docs/guides/web-search-and-scrape/#scraping-urls">
     Extract content from any URL as clean Markdown.
-  </Card>
-  <Card title="Image" icon="pen" href="/docs/guides/generating-images/">
+  </LinkCard>
+  <LinkCard title="Image" icon="pen" href="/docs/guides/generating-images/">
     Generate and edit images from text prompts with AI.
-  </Card>
-  <Card title="Video" icon="rocket" href="/docs/guides/generating-videos/">
+  </LinkCard>
+  <LinkCard title="Video" icon="rocket" href="/docs/guides/generating-videos/">
     Generate videos from text, images, or existing clips with AI.
-  </Card>
+  </LinkCard>
 </CardGrid>

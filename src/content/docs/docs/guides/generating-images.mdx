@@ -1,0 +1,60 @@
+---
+title: Generating Images
+description: Generate and edit images from text prompts with AI.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Flowmi can generate images from text prompts using AI models. You can also edit or transform existing images by providing reference files.
+
+## Generating from a prompt
+
+```bash
+flowmi image generate -p "A cat wearing a top hat, oil painting"
+```
+
+The image is saved to the current directory as `generated_<timestamp>.<ext>` by default. Use `-o` to specify a file path:
+
+```bash
+flowmi image generate -p "A minimalist logo" -o logo.png
+```
+
+## Editing with reference images
+
+Pass one or more reference images with `-i` to edit or transform them:
+
+```bash
+# Remove a background
+flowmi image generate -p "Remove the background" -i photo.jpg
+
+# Blend two images
+flowmi image generate -p "Blend these two images" -i a.jpg -i b.jpg
+```
+
+You can provide up to 14 reference images.
+
+## Aspect ratio and resolution
+
+Control the output dimensions:
+
+```bash
+# Widescreen
+flowmi image generate -p "A panoramic landscape" -a 16:9
+
+# High resolution
+flowmi image generate -p "A detailed portrait" -s 4K
+```
+
+Available resolutions: `512`, `1K` (default), `2K`, `4K`.
+
+## Choosing a model
+
+Use `--model` to select a specific model:
+
+```bash
+flowmi image generate -p "Hi-res landscape" --size 4K --model gemini-3-pro-image-preview
+```
+
+<Aside type="tip">
+The default model (`gemini-3.1-flash-image-preview`) is faster. Use `gemini-3-pro-image-preview` for higher quality, or `grok-imagine-image-pro` for a different style.
+</Aside>

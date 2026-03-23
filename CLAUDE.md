@@ -43,7 +43,7 @@ Command reference pages follow a consistent template: **Synopsis → Description
 ## Conventions
 
 - **`.md` vs `.mdx`** — Use `.mdx` only when importing Starlight components (Tabs, Steps, Cards, Aside, FileTree, etc.). Pure reference pages use `.md`. Remove unused component imports when simplifying a page.
-- **No custom Astro components in docs** — Only built-in Starlight components are used in documentation pages. Custom components exist only for the blog (`src/components/blog/`).
+- **Prefer Starlight components** — Use built-in Starlight components in documentation pages where possible. Custom Astro components live in `src/components/` and should only be created when Starlight doesn't cover the use case (e.g., `LinkCard` for clickable cards). Blog-specific components live in `src/components/blog/`.
 - **CLI source of truth** — Command flags, descriptions, and examples must match the Go source at `/Users/ys/Developer/flowmi-ai/cli/cmd/`. Run `flowmi <cmd> --help` to verify before writing or editing any command page.
 - **Trash commands consolidated** — Each command group (note, drive, table, email, table row) has a single `trash.md` covering all trash subcommands (list, view, restore, delete).
 - The CLI binary is `flowmi` with `fm` as an alias. Examples use the full `flowmi` name.

@@ -1,0 +1,52 @@
+---
+title: Generating Videos
+description: Generate videos from text, images, or existing clips with AI.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Flowmi can generate videos from text prompts, still images, or existing video clips. Generation is asynchronous — the CLI polls until the video is ready, then downloads it.
+
+## Text-to-video
+
+Generate a video from a text description. The `--duration` (`-d`) flag is required and accepts 1–15 seconds:
+
+```bash
+flowmi video generate -p "A rocket launching from Mars" -d 10
+```
+
+The video is saved to the current directory as `generated_<timestamp>.mp4` by default. Use `-o` to specify a file path:
+
+```bash
+flowmi video generate -p "Ocean waves" -d 8 -o waves.mp4
+```
+
+## Image-to-video
+
+Animate a still image by providing it with `-i`:
+
+```bash
+flowmi video generate -p "Animate this scene" -i photo.jpg -d 5
+```
+
+## Video editing
+
+Transform an existing video by providing its URL with `--video-url`:
+
+```bash
+flowmi video generate -p "Change the car color to red" --video-url https://example.com/clip.mp4 -d 5
+```
+
+<Aside type="caution">
+Source video duration is capped at 8.7 seconds when using `--video-url`.
+</Aside>
+
+## Aspect ratio and resolution
+
+Control the output format:
+
+```bash
+flowmi video generate -p "A sunset timelapse" -d 10 -a 16:9 -r 720p
+```
+
+Available resolutions: `480p` (default), `720p`.

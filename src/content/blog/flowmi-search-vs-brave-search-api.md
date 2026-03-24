@@ -58,7 +58,7 @@ Search costs **$5 per 1,000 requests** ($0.005/query). Every account gets $5 in 
 | **JSON output** | `--json` flag | Native JSON |
 | **Country/language filters** | Yes | Yes |
 | **Search source** | World's largest search engine | Brave's own index |
-| **Rate limit** | Per plan | 50 req/sec |
+| **Rate limit** | 100 req/sec | 50 req/sec |
 | **Bundled tools** | 7 tools (search, scrape, email, notes, drive, tables, images) | Search only |
 
 ## Pricing Comparison: Flowmi Search vs Brave Search API
@@ -239,7 +239,7 @@ Brave Search API costs **$0.005 per query** ($5 per 1,000 requests). Each accoun
 
 ### What are Flowmi Search rate limits?
 
-Rate limits depend on your plan tier. For most use cases, the limits are generous enough that you won't hit them. Brave's rate limit is 50 requests per second.
+Flowmi supports up to **100 requests per second** — double Brave's 50 req/sec limit.
 
 ### How many free queries does Brave Search API give?
 

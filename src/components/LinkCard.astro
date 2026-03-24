@@ -5,6 +5,7 @@ import type { ComponentProps, HTMLAttributes } from 'astro/types';
 interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
 	icon?: ComponentProps<typeof Icon>['name'];
 	title: string;
+	href: string;
 }
 
 const { icon, title, ...attributes } = Astro.props;

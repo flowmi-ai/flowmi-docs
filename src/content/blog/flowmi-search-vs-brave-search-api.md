@@ -20,7 +20,7 @@ This guide compares Flowmi Search and Brave Search API on every dimension that m
 
 [Flowmi](https://flowmi.ai) is a CLI toolkit that bundles seven real-world capabilities into a single binary: search, scrape, email, notes, drive, tables, and image generation. The [`flowmi search`](/docs/commands/search/) command supports three modes — **web**, **images**, and **news** — with structured JSON output via `--json`. Under the hood, search results are sourced from the world's largest search engine, so result quality is on par with what most developers already rely on.
 
-Search costs **1 credit per request**. Every new account gets 500 free credits, and credits never expire.
+Search costs **1 credit per request**. Every new account gets 500 free credits, and credits never expire. [Get started in under a minute →](/docs/getting-started/installation/)
 
 ```bash
 # Web search with JSON output

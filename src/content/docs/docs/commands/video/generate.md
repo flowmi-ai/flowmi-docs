@@ -1,6 +1,11 @@
 ---
 title: video generate
 description: Generate a video from a text prompt using AI.
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: max-video-preview:0
 ---
 
 ## Synopsis
